@@ -1,4 +1,4 @@
-const { createJsonSchema } = require("./schemaHelperFunctions");
+const { createJsonSchema } = require("../jsonSchemaValidatorClasses/schemaHelperFunctions");
 const { expect } = require("@playwright/test");
 const Ajv = require("ajv");
 const fs = require("fs");
@@ -12,6 +12,15 @@ async function validateJsonSchema(schemaName, responseBody, createSchema = false
     }
 
     const existingSchema = JSON.parse(fs.readFileSync(schemaPath, 'utf-8'));
+    const schemaRequiresRequest = existingSchema.required?.includes('_request');
+
+    if (schemaRequiresRequest && !responseBody._request) {
+        responseBody = {
+            _request: {},
+            ...responseBody
+        };
+    }
+
     const ajv = new Ajv({ allErrors: false });
     const validate = ajv.compile(existingSchema);
     const validRes = validate(responseBody);
@@ -23,10 +32,15 @@ async function validateJsonSchema(schemaName, responseBody, createSchema = false
             throw new Error(`JSON schema validation error:\n schemaName: ${schemaName}\n keyword: ${error.keyword}\n message: ${error.message}\n received: Property not found in responseBody`);
         } else if (error.keyword === 'type') {
             const instancePath = error.instancePath;
-            const receivedValue = instancePath.split('/').filter(key => key !== '').reduce((value, key) => value[key], responseBody);
+            const receivedValue = instancePath
+                .split('/')
+                .filter(key => key !== '')
+                .reduce((value, key) => value[key], responseBody);
+
             throw new Error(`JSON schema validation error:\n schemaName: ${schemaName}\n instancePath: ${instancePath}\n keyword: ${error.keyword}\n message: ${error.message}\n received: ${typeof receivedValue} ("${receivedValue}")\n`);
         }
     }
+
     expect(validRes).toBe(true);
 }
 
