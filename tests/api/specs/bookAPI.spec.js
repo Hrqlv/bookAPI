@@ -17,7 +17,7 @@ test.describe('API Tests @API @CI', () => {
         await test.step('Obter os livros - GET', async () => {
             const bookingResponse = await servicesApi.getBook();
             const bookBody = await bookingResponse.json();
-            await validateJsonSchema('GET_BOOKS', bookBody);
+            await validateJsonSchema('GET_AllBook', bookBody);
             expect(bookingResponse.status()).toBe(200);
             expect(Array.isArray(bookBody)).toBe(true);
             expect(bookBody.length).toBeGreaterThan(0);
@@ -34,7 +34,7 @@ test.describe('API Tests @API @CI', () => {
             const bookingId = listBody[0].bookingid;
             const bookingResponse = await servicesApi.getBookID(bookingId);
             const bookBody = await bookingResponse.json();
-            await validateJsonSchema('GET_BOOKID', bookBody);
+            await validateJsonSchema('GET_BookID', bookBody);
             expect(bookBody).toHaveProperty('firstname');
             expect(bookBody).toHaveProperty('lastname');
             expect(bookBody).toHaveProperty('totalprice');
