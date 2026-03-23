@@ -1,90 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "_initializer": {
-      "type": "object",
-      "properties": {
-        "fetchUid": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        },
-        "status": {
-          "type": "integer"
-        },
-        "statusText": {
-          "type": "string"
-        },
-        "headers": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "value": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "name",
-              "value"
-            ]
-          }
-        }
-      },
-      "required": [
-        "fetchUid",
-        "url",
-        "status",
-        "statusText",
-        "headers"
-      ]
-    },
-    "_headers": {
-      "type": "object",
-      "properties": {
-        "_headersMap": {
-          "type": "object",
-          "properties": {
-            "_map": {
-              "type": "object"
-            }
-          },
-          "required": [
-            "_map"
-          ]
-        },
-        "_headersArray": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "value": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "name",
-              "value"
-            ]
-          }
-        }
-      },
-      "required": [
-        "_headersMap",
-        "_headersArray"
-      ]
+    "token": {
+      "type": "string"
     }
   },
   "required": [
-    "_request",
-    "_initializer",
-    "_headers"
+    "token"
   ]
 }

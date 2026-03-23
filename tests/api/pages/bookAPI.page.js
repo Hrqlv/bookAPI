@@ -33,8 +33,14 @@ export class ServicesAPI {
         return response;
     }
 
-    async getBookID() {
-
+    async getBookID(id) {
+        const context = await request.newContext({
+            extraHTTPHeaders: {
+                'Authorization': this.authToken
+            }
+        });
+        const response = await context.get(`${this.urlBase}/booking/${id}`);
+        return response;
     }
 
     async createBook() {
