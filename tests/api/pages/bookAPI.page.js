@@ -43,8 +43,28 @@ export class ServicesAPI {
         return response;
     }
 
-    async createBook() {
-
+    async createBook(firstname, lastname, totalprice, depositpaid) {
+        const authTokenHeader = `Bearer ${this.authToken}`; 
+        const context = await request.newContext({
+            extraHTTPHeaders: {
+                'Authorization': authTokenHeader,
+                'Content-Type': 'application/json'
+            }
+        });
+        const response = await context.post(`${this.urlBase}/booking`, {
+            data: {
+                firstname: firstname,
+                lastname: lastname,
+                totalprice: totalprice,
+                depositpaid: depositpaid,
+                bookingdates: {
+                checkin: "2026-01-01",
+                checkout: "2026-01-10"
+            },
+            additionalneeds: "Breakfast"
+            }
+        });
+        return response;
     }
 
     async updateBook() {

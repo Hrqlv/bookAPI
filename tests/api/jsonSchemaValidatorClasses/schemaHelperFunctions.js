@@ -1,8 +1,8 @@
-const { createSchema } = require("genson-js");
-const fs = require("fs/promises");
-const path = require("path");
+import createSchema from "genson-js";
+import fs from "fs";
+import path from "path";
 
-async function createJsonSchema(jsonName, responseBodyJson) {
+export async function createJsonSchema(jsonName, responseBodyJson) {
     try {
         const schema = createSchema(responseBodyJson);
         const schemaString = JSON.stringify(schema, null, 2);
@@ -13,12 +13,10 @@ async function createJsonSchema(jsonName, responseBodyJson) {
     }
 }
 
-async function writeJsonFile(location, data) {
+export async function writeJsonFile(location, data) {
     try {
         await fs.writeFile(location, data);
     } catch (err) {
         console.error(err);
     }
 }
-
-module.exports = { createJsonSchema };
