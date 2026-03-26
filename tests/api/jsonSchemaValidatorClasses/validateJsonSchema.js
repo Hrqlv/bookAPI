@@ -1,8 +1,12 @@
-const { createJsonSchema } = require("../jsonSchemaValidatorClasses/schemaHelperFunctions");
-const { expect } = require("@playwright/test");
-const Ajv = require("ajv");
-const fs = require("fs");
-const path = require("path");
+import { createJsonSchema } from "../jsonSchemaValidatorClasses/schemaHelperFunctions";
+import { expect } from '@playwright/test';
+import Ajv from "ajv";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function sanitizeResponse(body) {
     if (Array.isArray(body)) {
@@ -52,7 +56,7 @@ function sanitizeSchema(schema) {
     return schema;
 }
 
-async function validateJsonSchema(schemaName, responseBody, createSchema = false) {
+export async function validateJsonSchema(schemaName, responseBody, createSchema = false) {
 
     const schemaPath = path.join(__dirname, `../jsonSchemas/${schemaName}.json`);
     
@@ -122,5 +126,3 @@ async function validateJsonSchema(schemaName, responseBody, createSchema = false
 
     expect(validRes).toBe(true);
 }
-
-module.exports = { validateJsonSchema };
