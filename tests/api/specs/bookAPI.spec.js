@@ -5,58 +5,55 @@ import { createUser } from "../../../helpers/helpers";
 
 let servicesApi;
 let user = createUser();
+let bookingId;
 
 test.describe('API Tests @API @CI', () => {
-    test.beforeEach(async ({ page }) => {
-        user = createUser();
-        servicesApi = new ServicesAPI();      
+  test.beforeEach(async ({ page }) => {
+    user = createUser();
+    servicesApi = new ServicesAPI();
 
-        const usuarioBody = await servicesApi.createToken('admin', 'password123');
-        await validateJsonSchema('POST_CreateToken', usuarioBody, true);
-        expect(usuarioBody.token).toBeDefined();
+    const authResponse = await servicesApi.generateAuthToken('admin', 'password123');
+    await validateJsonSchema('POST_CreateToken', authResponse);
+    expect(authResponse.token).toBeDefined();
+});
+
+test('Criar reserva com dados válidos', async ({ page }) => {
+    await test.step('POST /booking - Criar nova reserva', async () => {
+        const response = await servicesApi.createBooking(user.firstName, user.lastName, '80', 'true');
+        const responseBody = await response.json();
+        await validateJsonSchema('POST_NewBook', responseBody);
+        expect(response.status()).toBe(200);
+        expect(responseBody.bookingid).toBeDefined();
+        bookingId = responseBody.bookingid;
     });
+})
 
-    test('Buscar todos os livros', async ({ page }) => {
-        await test.step('Obter os livros - GET', async () => {
-            const bookingResponse = await servicesApi.getBook();
-            const bookBody = await bookingResponse.json();
-            await validateJsonSchema('GET_AllBook', bookBody, true);
-            expect(bookingResponse.status()).toBe(200);
-            expect(Array.isArray(bookBody)).toBe(true);
-            expect(bookBody.length).toBeGreaterThan(0);
-            expect(bookBody[0]).toHaveProperty('bookingid');
-        });
-    })
+test('Buscar reserva pelo ID', async ({ page }) => {
+    await test.step('GET /booking/:id - Buscar reserva criada', async () => {
+        const response = await servicesApi.getBookingById(bookingId);
+        const responseBody = await response.json();
+        await validateJsonSchema('GET_BookID', responseBody);
+        expect(response.status()).toBe(200);
+        expect(responseBody).toHaveProperty('firstname');
+        expect(responseBody).toHaveProperty('lastname');
+        expect(responseBody).toHaveProperty('totalprice');
+        expect(responseBody).toHaveProperty('depositpaid');
+        expect(responseBody).toHaveProperty('bookingdates');
+        expect(responseBody.bookingdates).toHaveProperty('checkin');
+        expect(responseBody.bookingdates).toHaveProperty('checkout');
+        expect(responseBody).toHaveProperty('additionalneeds');
+    });
+})
 
-     test('Buscar livro pelo ID', async ({ page }) => {
-        await test.step('Obter o livro - GET', async () => {
-            const listResponse = await servicesApi.getBook();
-            const listBody = await listResponse.json();
-            expect(listResponse.status()).toBe(200);
-            expect(listBody.length).toBeGreaterThan(0);
-            const bookingId = listBody[0].bookingid;
-            const bookingResponse = await servicesApi.getBookID(bookingId);
-            const bookBody = await bookingResponse.json();
-            await validateJsonSchema('GET_BookID', bookBody, true);
-            expect(bookBody).toHaveProperty('firstname');
-            expect(bookBody).toHaveProperty('lastname');
-            expect(bookBody).toHaveProperty('totalprice');
-            expect(bookBody).toHaveProperty('depositpaid');
-            expect(bookBody).toHaveProperty('bookingdates');
-            expect(bookBody.bookingdates).toHaveProperty('checkin');
-            expect(bookBody.bookingdates).toHaveProperty('checkout')
-            expect(bookBody).toHaveProperty('additionalneeds');
-        });
-    })
-
-     test('Criar livro', async ({ page }) => {
-        await test.step('Criar livro com dados válidos', async () => {
-            const postCreateBook = await servicesApi.createBook(user.firstName, user.lastName, '80', 'true');
-            await validateJsonSchema('POST_NewBook', postCreateBook, true);
-            const bookBody = await postCreateBook.json();
-            expect(bookBody.message).toEqual('Cadastro realizado com sucesso');
-            bookingId = bookBody._id;
-            expect(postCreateBook.status()).toBe(200);
-        });
-    })
+test('Buscar todas as reservas', async ({ page }) => {
+    await test.step('GET /booking - Listar todas as reservas', async () => {
+        const response = await servicesApi.getAllBookings();
+        const responseBody = await response.json();
+        await validateJsonSchema('GET_AllBook', responseBody);
+        expect(response.status()).toBe(200);
+        expect(Array.isArray(responseBody)).toBe(true);
+        expect(responseBody.length).toBeGreaterThan(0);
+        expect(responseBody[0]).toHaveProperty('bookingid');
+    });
+})
 })
