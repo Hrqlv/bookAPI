@@ -1,8 +1,16 @@
 
-# Playwright
+# Dependências
 node_modules/
+
+# Resultado dos testes
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Variável de ambiente
+.env
+
+# JSON Schema gerados automaticamente
+tests/api/jsonSchemas/

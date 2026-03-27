@@ -22,7 +22,7 @@ async generateAuthToken(username, password) {
     });
     expect(response.status(), `Request (/auth) failed\nStatus: ${(response.status())} ${response.statusText()}`).toBe(200);
     const responseBody = await response.json();
-    this.authToken = responseBody.authorization;
+    this.authToken = responseBody.token;
     return responseBody;
 }
 
@@ -69,16 +69,54 @@ async createBooking(firstname, lastname, totalprice, depositpaid) {
     return response;
 }
 
-async updateBooking() {
-
+async updateBooking(bookingId, firstname, lastname, totalprice, depositpaid) {
+    const context = await request.newContext({
+        extraHTTPHeaders: {
+            'Cookie': `token=${this.authToken}`,
+            'Content-Type': 'application/json'
+        }
+    });
+    const response = await context.put(`${this.urlBase}/booking/${bookingId}`, {
+        data: {
+            firstname: firstname,
+            lastname: lastname,
+            totalprice: totalprice,
+            depositpaid: depositpaid,
+            bookingdates: {
+                checkin: "2026-03-27",
+                checkout: "2026-04-27"
+            },
+            additionalneeds: "Breakfast"
+        }
+    });
+    return response;
 }
 
-async updatePartialBooking() {
-
+async updatePartialBooking(bookingId, firstname, lastname) {
+    const context = await request.newContext({
+        extraHTTPHeaders: {
+            'Cookie': `token=${this.authToken}`,
+            'Content-Type': 'application/json'
+        }
+    });
+    const response = await context.patch(`${this.urlBase}/booking/${bookingId}`, {
+        data: {
+            firstname: firstname,
+            lastname: lastname,
+        }
+    });
+    return response;
 }
 
-async deleteBooking() {
-
+async deleteBooking(bookingId) {
+    const context = await request.newContext({
+        extraHTTPHeaders: {
+            'Cookie': `token=${this.authToken}`,
+            'Content-Type': 'application/json'
+        }
+    });
+    const response = await context.delete(`${this.urlBase}/booking/${bookingId}`);
+    return response;
 }
 
 }

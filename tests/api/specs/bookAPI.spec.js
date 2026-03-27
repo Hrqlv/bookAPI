@@ -17,7 +17,8 @@ test.describe('API Tests @API @CI', () => {
     expect(authResponse.token).toBeDefined();
 });
 
-test('Criar reserva com dados válidos', async ({ page }) => {
+test.describe('Fluxo de sucesso', () => {
+    test('Criar reserva com dados válidos', async ({ page }) => {
     await test.step('POST /booking - Criar nova reserva', async () => {
         const response = await servicesApi.createBooking(user.firstName, user.lastName, '80', 'true');
         const responseBody = await response.json();
@@ -25,6 +26,33 @@ test('Criar reserva com dados válidos', async ({ page }) => {
         expect(response.status()).toBe(200);
         expect(responseBody.bookingid).toBeDefined();
         bookingId = responseBody.bookingid;
+    });
+})
+
+test('Atualizar reserva pelo ID', async ({ page }) => {
+    await test.step('PUT /booking/:id - Atualizar reserva criada', async () => {
+        const response = await servicesApi.updateBooking(bookingId, user.firstName, user.lastName, '150', 'true');
+        const responseBody = await response.json();
+        await validateJsonSchema('PUT_UpdateBooking', responseBody);
+        expect(response.status()).toBe(200);
+        expect(responseBody.firstname).toBe(user.firstName);
+        expect(responseBody.lastname).toBe(user.lastName);
+        expect(responseBody.totalprice).toBe(150);
+        expect(responseBody.depositpaid).toBe(true);
+        expect(responseBody.bookingdates).toHaveProperty('checkin');
+        expect(responseBody.bookingdates).toHaveProperty('checkout');
+        expect(responseBody).toHaveProperty('additionalneeds');
+    });
+})
+
+test('Atualizar alguns dados da reserva pelo ID', async ({ page }) => {
+    await test.step('PATCH /booking/:id - Atualizar alguns dados da reserva criada', async () => {
+        const response = await servicesApi.updatePartialBooking(bookingId, user.firstName, user.lastName);
+        const responseBody = await response.json();
+        await validateJsonSchema('PATCH_UpdatePartialBooking', responseBody);
+        expect(response.status()).toBe(200);
+        expect(responseBody.firstname).toBe(user.firstName);
+        expect(responseBody.lastname).toBe(user.lastName);
     });
 })
 
@@ -55,5 +83,15 @@ test('Buscar todas as reservas', async ({ page }) => {
         expect(responseBody.length).toBeGreaterThan(0);
         expect(responseBody[0]).toHaveProperty('bookingid');
     });
+})
+
+test('Deletar reserva pelo ID', async ({ page }) => {
+    await test.step('DELETE /booking/:id - Deletar reserva criada', async () => {
+        const response = await servicesApi.deleteBooking(bookingId);
+        expect(response.status()).toBe(201);
+        const responseBody = await response.text();
+        expect(responseBody).toBe('Created');
+    });
+})
 })
 })
