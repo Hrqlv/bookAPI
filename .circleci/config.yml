@@ -27,9 +27,11 @@ jobs:
       - store_artifacts:
           path: playwright-report
           destination: playwright-report
+          when: always
 
       - store_test_results:
           path: test-results
+          when: always
 
 workflows:
   version: 2
