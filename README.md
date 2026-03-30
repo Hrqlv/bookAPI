@@ -4,18 +4,38 @@
 
 Projeto de automação de testes para a API de reservas **Restful Booker**, validando fluxos funcionais como criação, atualização, busca e exclusão de reservas.
 
-## 🌐 API
+## 🌐 Site da API
 
-> https://restful-booker.herokuapp.com
+```
+https://restful-booker.herokuapp.com
+```
 
 ## 🛠 Tecnologias Utilizadas
 
-| 🎭 Playwright | Framework de automação de testes de API |
-| 🟨 JavaScript | Linguagem utilizada nos testes |
-| 🗂 JSON Schema | Validação automática da estrutura das respostas da API |
-| 📬 Postman | Validação manual das requisições |
-| 🔄 CircleCI | Pipeline de integração contínua |
+### 🎭 Playwright
+```
+Framework de automação de testes de API
+```
 
+### 🟨 JavaScript
+```
+Linguagem utilizada nos testes
+```
+
+### 🗂 JSON Schema
+```
+Validação automática da estrutura das respostas da API
+```
+
+### 📬 Postman
+```
+Validação manual das requisições
+```
+
+### 🔄 CircleCI
+```
+Pipeline de integração contínua
+```
 
 ## 🚀 Como Executar
 
