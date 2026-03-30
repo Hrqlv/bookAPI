@@ -17,6 +17,10 @@ jobs:
           command: npm ci
 
       - run:
+          name: Instalar browsers do Playwright
+          command: npx playwright install --with-deps
+
+      - run:
           name: Rodar testes
           command: npm run api
 
