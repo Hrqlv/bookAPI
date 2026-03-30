@@ -77,7 +77,7 @@ npx playwright show-report
 ```bash
 BookAPI
 │
-├── .cicleci/                 # Configurações de CI com GitHub Actions
+├── .cicleci/                 # Configurações do CI com CircleCI
 │
 ├── playwright-report/       # Relatório HTML nativo do Playwright
 ├── test-results/            # Resultados das execuções de testes
