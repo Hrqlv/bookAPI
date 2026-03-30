@@ -8,6 +8,6 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : 1,
 
-  reporter: [['list', { printSteps: true }], ['html']],
+  reporter: [['list', { printSteps: true }], ['html'], ['junit', { outputFile: 'test-results/results.xml' }]],
 });
 
