@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { ServicesAPI } from '../pages/bookAPI.page';
 import { validateJsonSchema } from "../jsonSchemaValidatorClasses/validateJsonSchema";
 import { createUser } from "../../../helpers/helpers";
+import { autenticacao } from '../../../fixtures/data';
 
 let servicesApi;
 let user = createUser();
@@ -12,12 +13,12 @@ test.describe('API Tests @API @CI', () => {
     user = createUser();
     servicesApi = new ServicesAPI();
 
-    const authResponse = await servicesApi.generateAuthToken('admin', 'password123');
+    const authResponse = await servicesApi.generateAuthToken(autenticacao.nome, autenticacao.senha);
     await validateJsonSchema('POST_CreateToken', authResponse);
     expect(authResponse.token).toBeDefined();
 });
 
-test.describe('Fluxos de sucesso', () => {
+test.describe('Fluxos de sucesso @SUCESSO', () => {
     test('Criar reserva com dados válidos', async ({ page }) => {
     await test.step('POST /booking - Criar nova reserva', async () => {
         const response = await servicesApi.createBooking(user.firstName, user.lastName, '80', 'true');
@@ -95,7 +96,7 @@ test('Deletar reserva pelo ID', async ({ page }) => {
 })
 })
 
-test.describe('Fluxos negativo', () => {
+test.describe('Fluxos de erro @ERRO', () => {
       test('Buscar reserva com ID inexistente', async ({ page }) => {
         await test.step('GET /booking/:id - Deve retornar 404', async () => {
             const response = await servicesApi.getBookingById(9999);
