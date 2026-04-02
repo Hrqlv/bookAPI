@@ -1,0 +1,645 @@
+{
+  "config": {
+    "configFile": "D:\\Projetos - Automaçao QA\\bookAPI\\playwright.config.js",
+    "rootDir": "D:/Projetos - Automaçao QA/bookAPI/tests/api",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Projetos - Automaçao QA/bookAPI/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Projetos - Automaçao QA/bookAPI/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        {
+          "printSteps": true
+        }
+      ],
+      [
+        "html",
+        null
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/results.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "coverage/report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "specs\\bookAPI.spec.js",
+      "file": "specs/bookAPI.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "API Tests @API @CI",
+          "file": "specs/bookAPI.spec.js",
+          "line": 11,
+          "column": 6,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Fluxos de sucesso @SUCESSO",
+              "file": "specs/bookAPI.spec.js",
+              "line": 21,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "Criar reserva com dados válidos",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "SUCESSO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 7208,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "POST /booking - Criar nova reserva",
+                              "duration": 6185
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:25.911Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-75d23fcd3fe62299ab78",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 22,
+                  "column": 5
+                },
+                {
+                  "title": "Atualizar reserva pelo ID",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "SUCESSO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 373,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "PUT /booking/:id - Atualizar reserva criada",
+                              "duration": 164
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:33.287Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-9016060b663a54e8d260",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 33,
+                  "column": 1
+                },
+                {
+                  "title": "Atualizar alguns dados da reserva pelo ID",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "SUCESSO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 361,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "PATCH /booking/:id - Atualizar alguns dados da reserva criada",
+                              "duration": 156
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:33.678Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-b5a62f567bee1f60120e",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 49,
+                  "column": 1
+                },
+                {
+                  "title": "Buscar reserva pelo ID",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "SUCESSO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 367,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "GET /booking/:id - Buscar reserva criada",
+                              "duration": 156
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:34.054Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-8df53e002e55b5006d79",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 60,
+                  "column": 1
+                },
+                {
+                  "title": "Buscar todas as reservas",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "SUCESSO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 358,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "GET /booking - Listar todas as reservas",
+                              "duration": 155
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:34.435Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-43703d3f1a0ccfcecfcd",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 77,
+                  "column": 1
+                },
+                {
+                  "title": "Deletar reserva pelo ID",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "SUCESSO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 352,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "DELETE /booking/:id - Deletar reserva criada",
+                              "duration": 146
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:34.807Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-b07aa016bb3a291e9710",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 89,
+                  "column": 1
+                }
+              ]
+            },
+            {
+              "title": "Fluxos de erro @ERRO",
+              "file": "specs/bookAPI.spec.js",
+              "line": 99,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "Buscar reserva com ID inexistente",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "ERRO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 341,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "GET /booking/:id - Deve retornar 404",
+                              "duration": 141
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:35.176Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-7898372d6c10fed493f9",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 100,
+                  "column": 7
+                },
+                {
+                  "title": "Deletar reserva com ID inexistente",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "ERRO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 352,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "DELETE /booking/:id - Deve retornar 405",
+                              "duration": 140
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:35.536Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-470d907b562221103628",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 107,
+                  "column": 5
+                },
+                {
+                  "title": "Atualizar reserva com token inválido",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "ERRO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 342,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "PUT /booking/:id - Deve retornar 403",
+                              "duration": 143
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:35.907Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-3fb565f6f5e2d037b7c0",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 114,
+                  "column": 5
+                },
+                {
+                  "title": "Atualizar reserva parcial com token inválido",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "ERRO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 345,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "PATCH /booking/:id - Deve retornar 403",
+                              "duration": 141
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:36.268Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-dbde0f77b55ef932b9b1",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 122,
+                  "column": 5
+                },
+                {
+                  "title": "Deletar reserva com token inválido",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "ERRO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 338,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "DELETE /booking/:id - Deve retornar 403",
+                              "duration": 141
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:36.633Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-8ea5af0d036e67e19498",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 130,
+                  "column": 5
+                },
+                {
+                  "title": "Gerar token com credenciais inválidas",
+                  "ok": true,
+                  "tags": [
+                    "API",
+                    "CI",
+                    "ERRO"
+                  ],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "",
+                      "projectName": "",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 343,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "steps": [
+                            {
+                              "title": "POST /auth - Deve retornar erro de credenciais",
+                              "duration": 143
+                            }
+                          ],
+                          "startTime": "2026-04-02T19:54:36.991Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "5ed6caad6ed200fdbf20-405cd2772c5174f81ce9",
+                  "file": "specs/bookAPI.spec.js",
+                  "line": 138,
+                  "column": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-04-02T19:54:24.667Z",
+    "duration": 12746.965,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

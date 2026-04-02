@@ -13,3 +13,7 @@ node_modules/
 
 # JSON Schema gerados automaticamente
 tests/api/jsonSchemas/
+
+# Sonar
+.scannerwork/
+coverage/

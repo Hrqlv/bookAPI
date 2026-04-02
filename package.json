@@ -7,10 +7,13 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^10.4.0",
-    "@playwright/test": "^1.58.2",
-    "@types/node": "^25.5.0"
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.5.0",
+    "@vitest/coverage-v8": "^4.1.2",
+    "sonarqube-scanner": "^4.3.5"
   },
   "scripts": {
-    "api": "npx playwright test --grep \"@API @CI\""
+    "api": "npx playwright test --grep \"@API @CI\"",
+    "sonar": "node sonar.js"
   }
 }

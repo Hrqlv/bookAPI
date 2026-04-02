@@ -24,6 +24,10 @@ jobs:
           name: Rodar testes
           command: npm run api
 
+      - run:
+          name: Run SonarCloud
+          command: npm run sonar
+
       - store_artifacts:
           path: playwright-report
           destination: playwright-report
