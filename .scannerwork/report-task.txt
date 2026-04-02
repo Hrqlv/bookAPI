@@ -3,5 +3,5 @@ projectKey=hrqlv
 serverUrl=https://sonarcloud.io
 serverVersion=8.0.0.84764
 dashboardUrl=https://sonarcloud.io/dashboard?id=hrqlv
-ceTaskId=AZ1PxB6EwWJZkmgeB57W
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZ1PxB6EwWJZkmgeB57W
+ceTaskId=AZ1P5DtMyNUG4LUKPyj2
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZ1P5DtMyNUG4LUKPyj2

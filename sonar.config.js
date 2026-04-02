@@ -1,9 +1,12 @@
 import sonarqubeScanner from 'sonarqube-scanner';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 sonarqubeScanner.scan(
   {
     serverUrl: 'https://sonarcloud.io',
-    token: '3bbadb3bf1496cd8c95170c9eacca39387d3dbab',
+    token: process.env.SONAR_TOKEN,
     options: {
       'sonar.projectKey': 'hrqlv',
       'sonar.organization': 'hrqlv',
