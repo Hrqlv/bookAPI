@@ -85,7 +85,7 @@ BookAPI
 ├── fixtures/
 │   └── data.ts              # Dados utilizados nos testes
 │
-├── support/
+├── helpers/
 │   └── helpers.ts           # Funções utilitárias reutilizáveis
 │
 ├── tests/api/
