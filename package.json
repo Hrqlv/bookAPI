@@ -14,6 +14,6 @@
   },
   "scripts": {
     "api": "npx playwright test --grep \"@API @CI\"",
-    "sonar": "node sonar.js"
+    "sonar": "node sonar.config.js"
   }
 }
