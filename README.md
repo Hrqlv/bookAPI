@@ -67,6 +67,11 @@ npm run api -- --grep @SUCESSO   # Fluxos de sucesso
 npm run api -- --grep @ERRO      # Fluxos de erro
 ```
 
+### Executar SonarCloud
+```bash
+npm run sonar
+```
+
 ### Visualizar relatório
 ```bash
 npx playwright show-report
@@ -83,10 +88,10 @@ BookAPI
 ├── test-results/            # Resultados das execuções de testes
 │
 ├── fixtures/
-│   └── data.ts              # Dados utilizados nos testes
+│   └── data.js              # Dados utilizados nos testes
 │
 ├── helpers/
-│   └── helpers.ts           # Funções utilitárias reutilizáveis
+│   └── helpers.js           # Funções utilitárias reutilizáveis
 │
 ├── tests/api/
 │   ├── jsonSchemas/              # Schemas JSON gerados automaticamente
@@ -99,6 +104,7 @@ BookAPI
 ├── .env                     # Variáveis de ambiente
 ├── .gitignore               # Arquivos ignorados pelo Git
 ├── package.json             # Dependências e scripts do projeto
-├── playwright.config.ts     # Configuração do Playwright
+├── playwright.config.js     # Configuração do Playwright
+├── sonar.config.js          # Configuração do SonarCloud
 └── README.md                # Documentação do projeto
 ```
